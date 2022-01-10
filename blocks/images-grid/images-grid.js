@@ -5,7 +5,8 @@ export default function decorate(block) {
     picture.classList.add('bg-picture');
     const overlay = cells[1];
     const styleHints = cells[2].textContent.split(',').map(e => e.trim()).filter(e => e !== '');
-    if (styleHints.length) overlay.classList.add(...styleHints);
+    styleHints.push('overlay');
+    overlay.classList.add(...styleHints);
     cells[2].textContent = ''
     row.classList.add('row');
   })

@@ -14,14 +14,8 @@
   --link-color: 3,95,230;
   --background-color: 255,255,255;
   --text-color: 0,0,0;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-      --link-color: 21,190,236;
-      --background-color: 0,0,0;
-      --text-color: 255,255,255;
-  }
+  --font-family-headline: "TCCC-UnityHeadline-Regular", "TCCC-UnityHeadline", sans-serif;
+  --font-family-body: "TCCC-UnityText-Regular", "TCCC-UnityText", sans-serif;
 }
 
 
@@ -33,10 +27,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'helvetica neue', helvetica,
-  ubuntu,
-  roboto, noto,
-  sans-serif;
+  font-family: var(--font-family-body);
   line-height: 1.6;
   margin: 0;
   color: rgba(var(--text-color),.9);
