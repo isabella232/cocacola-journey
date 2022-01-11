@@ -4,10 +4,10 @@ export default function decorate(block) {
     const picture = cells[0].querySelector('picture');
     picture.classList.add('bg-picture');
     const overlay = cells[1];
-    const styleHints = cells[2].textContent.split(',').map((e) => e.trim()).filter((e) => e !== '');
-    styleHints.push('overlay');
-    overlay.classList.add(...styleHints);
+    const styleHints = cells[2].textContent.split(',').map((e) => e.toLowerCase().trim()).filter((e) => e !== '');
+    overlay.classList.add('overlay');
     cells[2].textContent = '';
-    row.classList.add('row');
+    styleHints.push('row');
+    row.classList.add(...styleHints);
   });
 }

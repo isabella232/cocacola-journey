@@ -1,12 +1,31 @@
 footer {
-  margin-top: 2rem;
-  background-color: rgba(var(--text-color),.2);
+  padding: 2rem 2rem;
+  background-color: #404040;
 }
 
 footer .footer {
-  padding: 2rem 0;
   max-width: 768px;
   margin: auto;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+}
+
+footer .footer img {
+  max-height: 40px;
+}
+
+footer .footer .social {
+  display: flex;
+  justify-content: center;
+}
+
+footer .footer > div > div {
+  padding: 8px;
+}
+
+footer .footer .social p {
+  padding: 5px;
 }
 
 footer .footer p {

@@ -11,16 +11,16 @@
  */
 
  :root {
-  --link-color: 3,95,230;
+  --link-color: 242,0,0;
   --background-color: 255,255,255;
   --text-color: 0,0,0;
   --font-family-headline: "TCCC-UnityHeadline-Regular", "TCCC-UnityHeadline", sans-serif;
   --font-family-body: "TCCC-UnityText-Regular", "TCCC-UnityText", sans-serif;
+  --color-red: #f40000;
 }
 
 
 html {
-  font-size: 62.5%;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -37,6 +37,10 @@ body {
 
 body.appear {
   opacity: 1;
+}
+
+header {
+  height: 64px;
 }
 
 main {
@@ -165,14 +169,8 @@ main img {
 }
 
 @media (min-width: 600px) {
-  html {
-      font-size: 85%;
-  }
 }
 @media (min-width: 900px) {
-  html {
-      font-size: 100%;
-  }
   main>.section-wrapper>div {
       max-width: 30em;
       margin: auto;

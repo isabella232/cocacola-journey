@@ -11,7 +11,17 @@ main .images-grid .row {
   min-height: 550px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }
+
+main .images-grid .row.left {
+  justify-content: flex-start;
+}
+
+main .images-grid .row.shadow {
+  text-shadow: 2px 2px 4px #00000080;
+}
+
 main .images-grid picture.bg-picture {
   position: absolute;
   z-index: -1;
@@ -37,6 +47,12 @@ main .images-grid {
 }
 
 main .images-grid .overlay {
-  max-width: 460px;
-  padding: 30px;
+  max-width: 250px;
+  padding: 60px;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+main .images-grid .row.right .overlay {
+  border: 1px solid red;
 }

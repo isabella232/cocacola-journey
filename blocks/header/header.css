@@ -13,6 +13,11 @@ header .nav {
   width: 100vw;
   height: 64px;
   box-sizing: border-box;
+  justify-content: center;
+}
+
+header .header img.icon {
+  max-height: 40px;
 }
 
 /* hamburger */
@@ -94,7 +99,6 @@ header .nav-sections {
   flex-direction: column;
   display: none;
   background-color: rgba(var(--background-color),.92);
-  width: 100vw;
 }
 
 header .nav-sections h2 {
@@ -113,15 +117,24 @@ header .nav-sections li {
 
 header .nav[aria-expanded='true'] .nav-sections {
   display: block;
+  align-self: flex-start;
+}
+
+header .nav[aria-expanded='true'] {
   min-height: 100vh;
+}
+
+header .nav-sections a:any-link {
+  color: rgb(var(--text-color));
+  text-decoration-color: var(--color-red);
 }
 
 /* desktop nav styles */
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
   header .nav {
     grid-template-areas: 'brand sections';
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 250px 1fr;
   }
 
   header .nav-hamburger {
@@ -146,7 +159,8 @@ header .nav[aria-expanded='true'] .nav-sections {
   }
 
   header .nav-sections h2 {
-    font-size: 18px;
+    font-size: 14px;
+    font-weight: normal;
     margin: 0;
     cursor: pointer;
   }
