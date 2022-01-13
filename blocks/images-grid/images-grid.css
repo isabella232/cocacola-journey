@@ -8,7 +8,7 @@ main .images-grid-container {
 
 main .images-grid .row {
   position: relative;
-  min-height: 550px;
+  height: calc(100vh - 8.125rem);
   display: flex;
   align-items: center;
   justify-content: flex-end;
