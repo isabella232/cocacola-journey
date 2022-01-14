@@ -1,3 +1,5 @@
+import { makeLinksRelative } from '../../scripts/scripts.js';
+
 /**
  * collapses all open nav sections
  * @param {Element} sections The container element
@@ -37,6 +39,7 @@ export default async function decorate(block) {
   const navSections = document.createElement('div');
   navSections.classList.add('nav-sections');
   nav.innerHTML = html;
+  makeLinksRelative(nav);
   nav.querySelectorAll(':scope > div').forEach((navSection, i) => {
     if (!i) {
       // first section is the brand section
