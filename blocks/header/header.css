@@ -3,13 +3,14 @@
 header .header {
   position: fixed;
   z-index: 1;
-  background-color: rgba(var(--background-color),.92);
+  background-color: rgba(var(--background-color));
   width: 100vw;
   height: 50px;
   box-sizing: border-box;
 }
 
 header .nav {
+  background-color: rgba(var(--background-color));
   display: grid;
   grid-template-areas: 'hamburger brand' 'sections sections';
   grid-template-columns: 50px 1fr;
@@ -219,4 +220,13 @@ header .nav-sections a:any-link {
     width: 300px;
     left: 0px;
   } 
+
+  header .nav-section img.icon-search {
+    height: 16px;
+  }
+
+  header .nav-section img.icon-globe {
+    height: 16px;
+  }
+
 }
