@@ -52,6 +52,14 @@ main .columns img {
         flex-direction: unset;
     }
 
+    main .columns > div:nth-child(odd) .image {
+        margin-left: 20px;
+    }
+
+    main .columns > div:nth-child(even) .image {
+        margin-right: 20px;
+    }
+
     main .columns > div > div {
         width: 50%;
     }
