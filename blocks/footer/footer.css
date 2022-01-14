@@ -11,6 +11,10 @@ footer .footer {
   font-size: 14px;
 }
 
+footer .footer a:any-link {
+  color: white;
+}
+
 footer .footer img {
   max-height: 40px;
 }

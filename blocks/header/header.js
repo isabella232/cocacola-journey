@@ -21,6 +21,15 @@ function dynamicHeaderStyle(block) {
   observer.observe(header);
 }
 
+function addSecondaryNav(block) {
+  const a = block.querySelector(`.nav-section a[href="${window.location.pathname}"]`);
+  const hero = document.querySelector('div.block.hero');
+  const secondaryNav = document.createElement('div');
+  secondaryNav.classList.add('nav-secondary');
+  secondaryNav.innerHTML = a.closest('.nav-section').outerHTML;
+  hero.parentElement.append(secondaryNav);
+}
+
 /**
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -75,4 +84,6 @@ export default async function decorate(block) {
 
   block.append(nav);
   dynamicHeaderStyle(block);
+
+  addSecondaryNav(block);
 }

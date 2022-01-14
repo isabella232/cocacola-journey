@@ -133,6 +133,11 @@ header .nav-sections a:any-link {
   text-decoration-color: var(--color-red);
 }
 
+main .nav-secondary {
+  display: none;
+}
+
+
 /* desktop nav styles */
 
 @media (min-width: 1200px) {
@@ -214,7 +219,7 @@ header .nav-sections a:any-link {
   }
 
   header .nav-section[aria-expanded='true'] ul {
-    display: block;
+    display: none;
     position: absolute;
     background-color: rgba(var(--background-color),.92);
     width: 300px;
@@ -229,4 +234,66 @@ header .nav-sections a:any-link {
     height: 16px;
   }
 
+  /* secondary desktop nav styles */
+
+  main .nav-secondary {
+    color: #333;
+    background-color: #eee; 
+    border: 1px solid #ccc;
+    border-width: 1px 0 1px 0;
+    display: block;
+  }
+
+  main .nav-secondary a:any-link {
+    color: #333;
+    text-decoration-color: var(--color-red);
+  }
+
+  main .nav-secondary a:hover {
+    font-weight: 800;
+  }
+
+  main .nav-secondary .nav-section {
+    display: flex;
+    font-weight: 500;
+    font-size: 14px;
+    height: 60px;
+    overflow-x: scroll;
+    max-width: 768px;
+    white-space: nowrap;
+    margin: auto;
+    align-items: center;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  main .nav-secondary .nav-section::-webkit-scrollbar {
+    display: none;
+  }
+
+  main .nav-secondary h2 {
+    font-weight: 500;
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.6;
+    border-right: 1px solid #ccc;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 16px;
+  }
+
+  main .nav-secondary ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 16px;
+  }
+
+  main .nav-secondary ul li {
+    padding: 0 16px;
+  }
+
+
 }
+
