@@ -43,6 +43,13 @@ header {
   height: 50px;
 }
 
+@media (min-width: 1200px) {
+  header {
+    height: 128px;
+  }
+    
+}
+
 main {
   font-size: 1.6rem;
 }

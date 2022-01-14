@@ -13,8 +13,8 @@ function dynamicHeaderStyle(block) {
   const header = block.closest('header');
   const observer = new IntersectionObserver((entries) => {
     const isTop = entries[0].isIntersecting;
-    if (isTop) header.classList.add('top');
-    else header.classList.remove('top');
+    if (isTop) header.classList.remove('compact');
+    else header.classList.add('compact');
   }, { threshold: 0.5 });
   observer.observe(header);
 }
