@@ -1,23 +1,25 @@
 /* header and nav layout */
 
-header .nav {
-  display: grid;
-  grid-template-areas: 'hamburger brand' 'sections sections';
-  grid-template-columns: 50px 1fr;
-  grid-template-rows: 64px 1fr;
-  align-items: center;
-  padding: 0 2rem;
+header .header {
   position: fixed;
   z-index: 1;
   background-color: rgba(var(--background-color),.92);
   width: 100vw;
-  height: 64px;
+  height: 50px;
   box-sizing: border-box;
-  justify-content: center;
+}
+
+header .nav {
+  display: grid;
+  grid-template-areas: 'hamburger brand' 'sections sections';
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: 50px 1fr;
+  align-items: center;
+  padding: 0 2rem;
 }
 
 header .header img.icon {
-  max-height: 40px;
+  max-height: 32px;
 }
 
 /* hamburger */
@@ -85,6 +87,7 @@ header .nav-brand {
   font-size: 22px;
   font-weight: 700;
   line-height: 1em;
+  text-align: center;
 }
 
 header .nav-brand p {
@@ -132,13 +135,35 @@ header .nav-sections a:any-link {
 /* desktop nav styles */
 
 @media (min-width: 1200px) {
+  header .header {
+    text-align: center;
+  }
+
   header .nav {
+    display: inline-grid;
     grid-template-areas: 'brand sections';
     grid-template-columns: 250px 1fr;
   }
 
+  header.top, header.top .header {
+    height: 128px;
+  }
+
+  header.top .header .nav {
+    grid-template-areas: 'brand brand' 'sections sections';
+    grid-template-rows: unset;
+  }
+
+  header.top .header img.icon {
+    max-height: 60px;
+  }
+  
   header .nav-hamburger {
     display: none;
+  }
+
+  header.top .nav-brand {
+    padding: 16px;
   }
 
   header .nav-sections {
@@ -147,6 +172,11 @@ header .nav-sections a:any-link {
     background-color: unset;
     width: unset;        
   }
+
+  header.top .nav-sections h2 {
+    font-size: 16px;
+  }
+
   
   header .nav[aria-expanded='true'] .nav-sections {
     display: flex;

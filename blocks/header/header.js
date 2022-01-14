@@ -9,6 +9,16 @@ function collapseAllNavSections(sections) {
   });
 }
 
+function dynamicHeaderStyle(block) {
+  const header = block.closest('header');
+  const observer = new IntersectionObserver((entries) => {
+    const isTop = entries[0].isIntersecting;
+    if (isTop) header.classList.add('top');
+    else header.classList.remove('top');
+  }, { threshold: 0.5 });
+  observer.observe(header);
+}
+
 /**
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -61,4 +71,5 @@ export default async function decorate(block) {
   nav.setAttribute('aria-expanded', 'false');
 
   block.append(nav);
+  dynamicHeaderStyle(block);
 }
