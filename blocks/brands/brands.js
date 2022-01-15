@@ -5,7 +5,7 @@ export default async function decorate(block) {
   block.textContent = '';
   for (let i = 0; i < as.length; i += 1) {
     const a = as[i];
-    const brandLink = a.href;
+    const brandLink = new URL(a.href).pathname;
     // eslint-disable-next-line no-await-in-loop
     const meta = JSON.parse(await getMetadataJson(brandLink));
     const picture = createOptimizedPicture(meta['og:image']);
