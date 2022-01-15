@@ -59,6 +59,7 @@ main .products .products-carousel::before {
   content: '❮';
   margin-right: -60px;
   z-index: 1;
+  margin-left: 60px;
 }
 
 
