@@ -186,7 +186,11 @@ main img {
 }
 
 main.brand-barista-bros {
-  --brand-color: #E87722;
+  --brand-color: #e87722;
+}
+
+main.brand-coca-cola {
+  --brand-color: #f40000;
 }
 
 

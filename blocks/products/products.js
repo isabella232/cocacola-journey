@@ -34,6 +34,7 @@ function selectProduct(block, id, products) {
   const carousel = block.querySelector('.products-carousel');
   block.querySelectorAll('.products-carousel-product').forEach((a) => a.classList.remove('selected'));
   document.getElementById(id).classList.add('selected');
+  console.log(id);
   centerSelected(carousel);
   const productInfo = block.querySelector('.products-info');
   const selectedPath = carousel.querySelector('.selected').dataset.path;
@@ -85,7 +86,7 @@ export default async function decorate(block) {
     const { path } = picture.closest('.product').dataset;
     const newPicture = picture.cloneNode(true);
     const a = document.createElement('a');
-    a.id = path.split('/').pop();
+    a.id = `product-${path.split('/').pop()}`;
     a.href = `#${a.id}`;
     a.className = 'products-carousel-product';
     a.dataset.path = path;
@@ -102,5 +103,6 @@ export default async function decorate(block) {
   const productInfo = document.createElement('div');
   productInfo.className = 'products-info';
   block.append(productInfo);
-  selectProduct(block, block.querySelector('.products-carousel-product').id, products);
+  const firstProductId = block.querySelector('.products-carousel-product').id;
+  selectProduct(block, firstProductId, products);
 }
