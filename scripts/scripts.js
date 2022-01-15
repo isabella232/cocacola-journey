@@ -231,6 +231,35 @@ function buildBlock(blockName, content) {
 }
 
 /**
+ * forward looking *.metadata.json experiment
+ * fetches metadata.json of page
+ * @param {path} path to *.metadata.json
+ * @returns {Object} containing sanitized meta data
+ */
+
+export async function getMetadataJson(path) {
+  const resp = await fetch(path.split('.')[0]);
+  const text = await resp.text();
+  const meta = {};
+  if (resp.status === 200 && text && text.includes('<head>')) {
+    const headStr = text.split('<head>')[1].split('</head>')[0];
+    const head = document.createElement('head');
+    head.innerHTML = headStr;
+    const metaTags = head.querySelectorAll(':scope > meta');
+    metaTags.forEach((metaTag) => {
+      const name = metaTag.getAttribute('name') || metaTag.getAttribute('property');
+      const value = metaTag.getAttribute('content');
+      if (meta[name]) {
+        meta[name] += `, ${value}`;
+      } else {
+        meta[name] = value;
+      }
+    });
+  }
+  return (JSON.stringify(meta));
+}
+
+/**
  * Loads JS and CSS for a block.
  * @param {Element} $block The block element
  */
@@ -423,7 +452,7 @@ export function makeLinksRelative(main) {
  * Decorates the picture elements.
  * @param {Element} main The container element
  */
-function decoratePictures(main) {
+export function decoratePictures(main) {
   main.querySelectorAll('img[src*="/media_"').forEach((img, i) => {
     const newPicture = createOptimizedPicture(img.src, img.alt, !i);
     const picture = img.closest('picture');
@@ -516,6 +545,13 @@ document.addEventListener('click', () => sampleRUM('click'));
 
 loadPage(document);
 
+function decorateBrandStyle(main) {
+  if (window.location.pathname.includes('/brands/')) {
+    const brand = window.location.pathname.split('/brands/')[1].split('/')[0];
+    main.classList.add(`brand-${brand}`);
+  }
+}
+
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
   const picture = main.querySelector('picture');
@@ -566,6 +602,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateBrandStyle(main);
 }
 
 /**

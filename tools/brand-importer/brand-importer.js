@@ -1,15 +1,23 @@
 function createTable(name, tableData, keys) {
   const table = document.createElement('table');
-  table.innerHTML = `<tr><th colspan="${keys.length}">${name}</th>`;
-  tableData.forEach((row) => {
-    const tr = document.createElement('tr');
-    keys.forEach((key) => {
-      const td = document.createElement('td');
-      td.textContent = row[key] || '';
-      tr.append(td);
+  table.innerHTML = `<tr><th colspan="${keys ? keys.length : 1}">${name}</th>`;
+  if (Array.isArray(tableData)) {
+    tableData.forEach((row) => {
+      const tr = document.createElement('tr');
+      keys.forEach((key) => {
+        const td = document.createElement('td');
+        td.textContent = row[key] || '';
+        tr.append(td);
+      });
+      table.append(tr);
     });
+  } else {
+    const tr = document.createElement('tr');
+    const td = document.createElement('td');
+    td.append(tableData);
+    tr.append(td);
     table.append(tr);
-  });
+  }
   return (table);
 }
 
@@ -24,7 +32,7 @@ function createTable(name, tableData, keys) {
       let fact = nutritionData[label];
       if (!fact) {
         fact = { label };
-        facts.push( fact );
+        facts.push(fact);
         nutritionData[label] = fact;
       }
 
@@ -37,6 +45,10 @@ function createTable(name, tableData, keys) {
       });
     }
   });
+
+  const p = document.createElement('br');
+  const ingredients = document.querySelector('#tab3 > div');
   document.body.textContent = '';
-  document.body.append(h1, image, createTable('Nutrition Facts', facts, ['label', 'name', 'value', 'isDI', 'isRDI']));
+  document.head.textContent = '';
+  document.body.append(h1, image, createTable('Nutrition Facts', facts, ['label', 'name', 'value', 'isDI', 'isRDI']), p, createTable('Ingredients', ingredients));
 }
