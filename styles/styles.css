@@ -185,6 +185,11 @@ main img {
   }    
 }
 
+main.brand-barista-bros {
+  --brand-color: #E87722;
+}
+
+
 /* above the fold CSS goes here to squash CLS */
 
 main .section-wrapper[data-section-status='loading'], main .section-wrapper[data-section-status='initialized'] {

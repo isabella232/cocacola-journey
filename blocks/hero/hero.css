@@ -19,6 +19,11 @@ main .hero h1 {
     margin-left: auto;
     margin-right: auto;
     color: white;
+    text-shadow: 0 0 7px #00000080;
+    text-transform: uppercase;
+    font-size: 1.75rem;
+    line-height: 2.125rem;
+    text-align: center;
 }
 
 
@@ -37,4 +42,18 @@ main .hero img {
     object-fit: cover;
     width: 100%;
     height: 100%;
+}
+
+@media (min-width: 600px) {
+    main .hero h1 {
+        font-size: 2.75rem;
+        line-height: 3.125rem;    
+    }
+}
+
+@media (min-width: 900px) {
+    main .hero h1 {
+        font-size: 3.625rem;
+        line-height: 4rem;    
+    }
 }

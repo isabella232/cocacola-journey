@@ -23,11 +23,16 @@ function dynamicHeaderStyle(block) {
 
 function addSecondaryNav(block) {
   const a = block.querySelector(`.nav-section a[href="${window.location.pathname}"]`);
-  const hero = document.querySelector('div.block.hero');
-  const secondaryNav = document.createElement('div');
-  secondaryNav.classList.add('nav-secondary');
-  secondaryNav.innerHTML = a.closest('.nav-section').outerHTML;
-  hero.parentElement.append(secondaryNav);
+  if (a) {
+    const section = a.closest('.nav-section');
+    if (section.querySelector('ul')) {
+      const hero = document.querySelector('div.block.hero');
+      const secondaryNav = document.createElement('div');
+      secondaryNav.classList.add('nav-secondary');
+      secondaryNav.innerHTML = section.outerHTML;
+      hero.parentElement.append(secondaryNav);
+    }
+  }
 }
 
 /**
