@@ -193,6 +193,14 @@ main.brand-coca-cola {
   --brand-color: #f40000;
 }
 
+main.brand-sprite {
+  --brand-color: #11a753;
+}
+
+main.brand-fanta {
+  --brand-color: #f7941e;
+}
+
 
 /* above the fold CSS goes here to squash CLS */
 
