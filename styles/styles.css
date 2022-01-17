@@ -201,6 +201,12 @@ main.brand-fanta {
   --brand-color: #f7941e;
 }
 
+main.brand-fuze-tea {
+  --brand-color: #91d6ac;
+}
+
+
+
 
 /* above the fold CSS goes here to squash CLS */
 
