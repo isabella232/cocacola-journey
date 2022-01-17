@@ -205,8 +205,9 @@ main.brand-fuze-tea {
   --brand-color: #91d6ac;
 }
 
-
-
+main.brand-lift {
+  --brand-color: #fbd304;
+}
 
 /* above the fold CSS goes here to squash CLS */
 
