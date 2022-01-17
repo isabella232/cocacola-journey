@@ -185,6 +185,11 @@ main img {
   }    
 }
 
+main {
+  --brand-color: #aaa;
+}
+
+
 main.brand-barista-bros {
   --brand-color: #e87722;
 }
@@ -207,6 +212,10 @@ main.brand-fuze-tea {
 
 main.brand-lift {
   --brand-color: #fbd304;
+}
+
+main.brand-schweppes {
+  --brand-color: #ffcd00;
 }
 
 /* above the fold CSS goes here to squash CLS */
