@@ -17,6 +17,7 @@ function centerSelected(carousel) {
   products.forEach((product) => {
     product.classList.remove('hidden');
   });
+
   if (products.length % 2 === 0) {
     carousel.lastChild.classList.add('hidden');
   }
@@ -34,7 +35,6 @@ function selectProduct(block, id, products) {
   const carousel = block.querySelector('.products-carousel');
   block.querySelectorAll('.products-carousel-product').forEach((a) => a.classList.remove('selected'));
   document.getElementById(id).classList.add('selected');
-  console.log(id);
   centerSelected(carousel);
   const productInfo = block.querySelector('.products-info');
   const selectedPath = carousel.querySelector('.selected').dataset.path;
@@ -65,44 +65,56 @@ export default async function decorate(block) {
   const as = [...block.querySelectorAll('a')];
   const products = document.createElement('main');
   block.textContent = '';
-  for (let i = 0; i < as.length; i += 1) {
-    const a = as[i];
-    const productLink = a.href;
-    // eslint-disable-next-line no-await-in-loop
-    const resp = await fetch(`${productLink}.plain.html`);
-    // eslint-disable-next-line no-await-in-loop
-    const html = await resp.text();
+  const productname = window.location.href.split('/').pop();
+  if (window.contents) {
+    console.log('injecting product content', productname);
     const div = document.createElement('div');
     div.className = 'product';
-    div.innerHTML = html;
-    div.dataset.path = productLink;
+    div.innerHTML = window.contents;
+    div.dataset.path = window.location;
     decoratePictures(div);
     products.append(div);
+  } else {
+    const firstProductURL = new URL(as[0].href);
+    // forward to the first product in the brand
+    window.location = new URL(firstProductURL.pathname, window.location.href);
   }
 
   const carousel = document.createElement('div');
   carousel.className = 'products-carousel';
-  products.querySelectorAll('picture').forEach((picture) => {
-    const { path } = picture.closest('.product').dataset;
-    const newPicture = picture.cloneNode(true);
-    const a = document.createElement('a');
-    a.id = `product-${path.split('/').pop()}`;
-    a.href = `#${a.id}`;
-    a.className = 'products-carousel-product';
-    a.dataset.path = path;
-    a.append(newPicture);
-    carousel.append(a);
-  });
+  const parser = new DOMParser();
+
+  await Promise.all(as
+    .map((a) => fetch(a.href))
+    .filter(async (resp) => resp.ok)
+    .map(async (resp) => {
+      const body = await (await resp).text();
+      const path = (await resp).url;
+      const doc = parser.parseFromString(body, 'text/html');
+      const image = new URL(doc.querySelector('meta[property="og:image"]').getAttribute('content'));
+      const imageurl = new URL(image.pathname, window.location.href);
+
+      const picture = document.createElement('picture');
+
+      const img = document.createElement('img');
+      img.src = imageurl.href;
+
+      const a = document.createElement('a');
+      a.id = `product-${path.split('/').pop()}`;
+      a.href = path.split('/').pop();
+      a.className = 'products-carousel-product';
+      a.dataset.path = path;
+
+      picture.append(img);
+      a.append(picture);
+      carousel.append(a);
+      return a;
+    }));
 
   block.append(carousel);
-
-  window.addEventListener('hashchange', () => {
-    selectProduct(block, window.location.hash.substring(1), products);
-  });
 
   const productInfo = document.createElement('div');
   productInfo.className = 'products-info';
   block.append(productInfo);
-  const firstProductId = block.querySelector('.products-carousel-product').id;
-  selectProduct(block, firstProductId, products);
+  selectProduct(block, `product-${productname}`, products);
 }

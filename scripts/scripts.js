@@ -502,7 +502,7 @@ async function waitForLCP() {
 /**
  * Decorates the page.
  */
-async function loadPage(doc) {
+export async function loadPage(doc) {
   // eslint-disable-next-line no-use-before-define
   await loadEager(doc);
   // eslint-disable-next-line no-use-before-define
@@ -572,9 +572,12 @@ function loadHeader(header) {
 
 function loadFooter(footer) {
   const footerBlock = buildBlock('footer', '');
-  footer.append(footerBlock);
-  decorateBlock(footerBlock);
-  loadBlock(footerBlock);
+  // do not load footer twice
+  if (!footer.children.length) {
+    footer.append(footerBlock);
+    decorateBlock(footerBlock);
+    loadBlock(footerBlock);
+  }
 }
 
 /**
