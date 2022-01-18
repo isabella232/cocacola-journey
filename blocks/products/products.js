@@ -109,10 +109,31 @@ export default async function decorate(block) {
       a.append(picture);
       decoratePictures(a);
       carousel.append(a);
+
+      if (window.location.href !== path) {
+        // stash that content
+        const div = document.createElement('div');
+        div.className = 'product';
+        div.innerHTML = doc.body.innerHTML;
+        div.dataset.path = path;
+        decoratePictures(div);
+        products.append(div);
+      }
+
+      a.onclick = (e) => {
+        e.preventDefault();
+        window.history.pushState({ product: a.id }, '', a.href);
+        selectProduct(block, a.id, products);
+      };
+
       return a;
     }));
 
   block.append(carousel);
+
+  window.onpopstate = ({ state }) => {
+    selectProduct(block, state.product, products);
+  };
 
   const productInfo = document.createElement('div');
   productInfo.className = 'products-info';
