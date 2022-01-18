@@ -107,6 +107,7 @@ export default async function decorate(block) {
 
       picture.append(img);
       a.append(picture);
+      decoratePictures(a);
       carousel.append(a);
       return a;
     }));
