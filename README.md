@@ -2,7 +2,7 @@
 Recreating existing Coca-Cola sites on helix
 
 ## Environments
-- Preview: https://main--cocacola-journey--hlx3.page.hlx3.page/
+- Preview: https://main--cocacola-journey--hlx3.page/
 - Live: https://main--cocacola-journey--hlx.live/
 
 ## Local development
