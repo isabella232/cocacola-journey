@@ -204,7 +204,7 @@ function decorateBlocks($main) {
  * @param {string} blockName name of the block
  * @param {any} content two dimensional array or string or object of content
  */
-function buildBlock(blockName, content) {
+export function buildBlock(blockName, content) {
   const table = Array.isArray(content) ? content : [[content]];
   const blockEl = document.createElement('div');
   // build image block nested div structure
@@ -219,6 +219,7 @@ function buildBlock(blockName, content) {
           if (typeof val === 'string') {
             colEl.innerHTML += val;
           } else {
+            console.log('appending', val);
             colEl.appendChild(val);
           }
         }
@@ -267,6 +268,7 @@ export async function loadBlock(block, eager = false) {
   if (!(block.getAttribute('data-block-status') === 'loading' || block.getAttribute('data-block-status') === 'loaded')) {
     block.setAttribute('data-block-status', 'loading');
     const blockName = block.getAttribute('data-block-name');
+    console.log('loading block', blockName, block);
     try {
       const cssLoaded = new Promise((resolve) => {
         loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`, resolve);
@@ -580,6 +582,16 @@ function loadFooter(footer) {
   }
 }
 
+async function addLoadTemplateBlock(main) {
+  if (main.querySelector('div.nutrition-facts')
+  && main.querySelector('div.ingredients')
+  && !main.querySelector('div.load-template')) {
+    const loadTemplateBlock = buildBlock('load-template', [['template', '..']]);
+    main.append(loadTemplateBlock);
+    decorateBlock(loadTemplateBlock);
+  }
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -587,6 +599,7 @@ function loadFooter(footer) {
 function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
+    addLoadTemplateBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
