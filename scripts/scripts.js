@@ -554,6 +554,30 @@ function decorateBrandStyle(main) {
   }
 }
 
+function setTheme() {
+  const theme = getMetadata('theme');
+  if (theme) {
+    const themeClass = toClassName(theme);
+    document.body.classList.add(themeClass);
+  }
+}
+
+function buildArticleHeader(mainEl) {
+  const div = document.createElement('div');
+  const h1 = mainEl.querySelector('h1');
+  const picture = mainEl.querySelector('picture');
+  const readTime = getMetadata('read-time') || '';
+  const publicationDate = getMetadata('publication-date');
+
+  const articleHeaderBlockEl = buildBlock('article-header', [
+    [h1],
+    [`<p>${readTime}</p><p>${publicationDate}</p>`],
+    [picture.closest('p')],
+  ]);
+  div.append(articleHeaderBlockEl);
+  mainEl.prepend(div);
+}
+
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
   const picture = main.querySelector('picture');
@@ -598,6 +622,7 @@ async function addLoadTemplateBlock(main) {
  */
 function buildAutoBlocks(main) {
   try {
+    if (document.body.classList.contains('article')) buildArticleHeader(main);
     buildHeroBlock(main);
     addLoadTemplateBlock(main);
   } catch (error) {
@@ -625,6 +650,7 @@ export function decorateMain(main) {
  * loads everything needed to get to LCP.
  */
 async function loadEager(doc) {
+  setTheme();
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
