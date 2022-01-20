@@ -2,8 +2,7 @@ version: 1
 
 sitemaps:
   website:
-    origin: https://www.coca-colajourney.co.nz/
-    lastmod: YYYY-MM-DD
+    origin: https://www.coca-colajourney.co.nz
     languages:
       default:
         source: /query-index.json
