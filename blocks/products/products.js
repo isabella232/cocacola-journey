@@ -53,6 +53,7 @@ function selectProduct(block, id, products) {
   const selectedPath = carousel.querySelector('.selected').dataset.path;
   const selectedProduct = products.querySelector(`[data-path="${selectedPath}"]`);
   const title = selectedProduct.querySelector('h1').textContent;
+  document.title = title;
   const ps = selectedProduct.querySelectorAll(':scope > div > p');
   let description = '';
   ps.forEach((p) => {
