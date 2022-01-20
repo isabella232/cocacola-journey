@@ -14,12 +14,25 @@ function centerSelected(carousel) {
       delta += 1;
     }
   }
-  products.forEach((product) => {
-    product.classList.remove('hidden');
+  const centeredProducts = [...carousel.children];
+  centeredProducts.forEach((product, i) => {
+    if ((i > targetIndex - 3) && (i < targetIndex + 3)) {
+      product.classList.remove('hidden');
+    } else {
+      product.classList.add('hidden');
+    }
   });
 
-  if (products.length % 2 === 0) {
-    carousel.lastChild.classList.add('hidden');
+  if (products.length === 1) {
+    carousel.classList.add('single');
+  }
+
+  if (products.length === 2) {
+    carousel.classList.add('double');
+  }
+
+  if (products.length > 2) {
+    carousel.classList.add('many');
   }
 }
 
@@ -67,7 +80,6 @@ export default async function decorate(block) {
   block.textContent = '';
   const productname = window.location.href.split('/').pop();
   if (window.contents) {
-    console.log('injecting product content', productname);
     const div = document.createElement('div');
     div.className = 'product';
     div.innerHTML = window.contents;
