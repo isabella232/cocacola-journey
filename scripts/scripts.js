@@ -219,7 +219,6 @@ export function buildBlock(blockName, content) {
           if (typeof val === 'string') {
             colEl.innerHTML += val;
           } else {
-            console.log('appending', val);
             colEl.appendChild(val);
           }
         }
@@ -268,7 +267,6 @@ export async function loadBlock(block, eager = false) {
   if (!(block.getAttribute('data-block-status') === 'loading' || block.getAttribute('data-block-status') === 'loaded')) {
     block.setAttribute('data-block-status', 'loading');
     const blockName = block.getAttribute('data-block-name');
-    console.log('loading block', blockName, block);
     try {
       const cssLoaded = new Promise((resolve) => {
         loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`, resolve);
