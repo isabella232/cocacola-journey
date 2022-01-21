@@ -545,6 +545,20 @@ document.addEventListener('click', () => sampleRUM('click'));
 
 loadPage(document);
 
+export async function lookupPages(pathnames) {
+  if (!window.pageIndex) {
+    const resp = await fetch('/query-index.json');
+    const json = await resp.json();
+    const lookup = {};
+    json.data.forEach((row) => {
+      lookup[row.path] = row;
+    });
+    window.pageIndex = { data: json.data, lookup };
+  }
+  const result = pathnames.map((path) => window.pageIndex.lookup[path]).filter((e) => e);
+  return (result);
+}
+
 function decorateBrandStyle(main) {
   if (window.location.pathname.includes('/brands/')) {
     const brand = window.location.pathname.split('/brands/')[1].split('/')[0];
