@@ -623,7 +623,7 @@ async function addLoadTemplateBlock(main) {
   && main.querySelector('div.ingredients')
   && !main.querySelector('div.load-template')) {
     const loadTemplateBlock = buildBlock('load-template', [['template', '..']]);
-    main.append(loadTemplateBlock);
+    main.prepend(loadTemplateBlock);
     decorateBlock(loadTemplateBlock);
   }
 }
