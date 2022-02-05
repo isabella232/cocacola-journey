@@ -10,15 +10,9 @@ export function createCard(article, classPrefix, eager = false) {
     article.imageAlt,
     eager, [{ width: 750 }],
   ).outerHTML;
-  card.innerHTML = `<div class="${classPrefix}-card-header category-color-${toClassName(article.category)}">
-    <span class="${classPrefix}-card-category">${article.category}</span> 
-    <span class="${classPrefix}-card-readtime">${article.readTime || ''}</span>
-    </div>
-    <div class="${classPrefix}-card-picture"><a href="${article.path}">${pictureString}</a></div>
+  card.innerHTML = `<div class="${classPrefix}-card-picture"><a href="${article.path}">${pictureString}</a></div>
     <div class="${classPrefix}-card-body">
-    <h3>${title}</h3>
-    <p>${article.description}</p>
-    <p><a href="${article.path}">Read Now</a></p>
+    <a href="${article.path}"><h3>${title}</h3></a>
     </div>`;
   return (card);
 }

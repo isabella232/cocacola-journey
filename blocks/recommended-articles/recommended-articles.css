@@ -1,0 +1,53 @@
+main .recommended-articles {
+      display: flex;
+      flex-wrap: nowrap;
+      max-width: 1200px;
+      margin: auto;
+  }
+  
+  main .recommended-articles-card {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 20px;
+  }
+  
+  main .recommended-articles-card h3 {
+    font-family: var(--heading-font-family);
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  main .recommended-articles-card-body a:any-link{
+    text-decoration: none;
+    color: #333333;
+    cursor: pointer;
+    padding-right: 24px;
+  }
+
+  main .recommended-articles-card-body a:any-link:hover{
+    text-decoration: underline red;
+  }
+  
+  main .recommended-articles-card-body a:any-link::after {
+    content: '';
+    background: url("/icons/circle-arrow.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    height: 180px;
+    vertical-align: text-top;
+    width: 15px;
+    margin-right: -24px;
+  }
+  
+  @media (min-width: 600px) {
+    main .recommended-articles-card {
+        width: 50%;
+    }
+  }
+
+  @media (min-width: 900px) {
+    main .rrecommended-articles-card {
+        width: 25%;
+    }
+  }

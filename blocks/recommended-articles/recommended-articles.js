@@ -11,6 +11,6 @@ export default async function decorate(block) {
   block.textContent = '';
   const articles = await lookupPages(pathnames);
   articles.forEach((article) => {
-    block.append(createCard(article, 'related-posts'));
+    block.append(createCard(article, 'recommended-articles'));
   });
 }
