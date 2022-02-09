@@ -25,3 +25,8 @@ main .search .search-card h2 {
     font-size: 18px;
     margin: 0
 }
+
+main .search .search-highlight {
+    background: rgba(var(--link-color),.15);
+    color: unset;
+}
