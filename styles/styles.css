@@ -223,6 +223,17 @@ main.brand-schweppes {
   --brand-color: #ffcd00;
 }
 
+main .section-wrapper.disclaimer {
+  font-size: 12px;
+  color: #999;
+}
+
+main .section-wrapper.disclaimer > div {
+  max-width: 900px;
+  margin: 64px auto;
+}
+
+
 /* country selector theme styling */
 
 .country-selector main h2 {

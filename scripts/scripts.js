@@ -559,10 +559,21 @@ export async function lookupPages(pathnames) {
   return (result);
 }
 
+async function addDisclaimer(path, parent) {
+  const resp = await fetch(`${path}.plain.html`);
+  const html = await resp.text();
+  console.log(html);
+  const section = document.createElement('div');
+  section.innerHTML = html;
+  section.classList.add('disclaimer', 'section-wrapper');
+  parent.append(section);
+}
+
 function decorateBrandStyle(main) {
   if (window.location.pathname.includes('/brands/')) {
     const brand = window.location.pathname.split('/brands/')[1].split('/')[0];
     main.classList.add(`brand-${brand}`);
+    addDisclaimer('/brands/disclaimer', main);
   }
 }
 
