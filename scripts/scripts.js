@@ -537,7 +537,7 @@ initHlx();
 
 const LCP_BLOCKS = ['hero']; // add your LCP blocks to the list
 const RUM_GENERATION = 'starter-1'; // add your RUM generation information here
-const PRODUCTION_DOMAINS = ['coca-cola'];
+const PRODUCTION_DOMAINS = ['www.coca-colajourney.co.nz'];
 
 sampleRUM('top');
 window.addEventListener('load', () => sampleRUM('load'));
