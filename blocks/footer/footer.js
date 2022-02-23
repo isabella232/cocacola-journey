@@ -3,6 +3,8 @@
  * @param {Element} block The header block element
  */
 
+import { makeLinksRelative } from '../../scripts/scripts.js';
+
 export default async function decorate(block) {
   const resp = await fetch('/footer.plain.html');
   const html = await resp.text();
@@ -12,5 +14,6 @@ export default async function decorate(block) {
   sections.forEach((e, i) => {
     footer.children[i].classList.add(e);
   });
+  makeLinksRelative(footer);
   block.append(footer);
 }
