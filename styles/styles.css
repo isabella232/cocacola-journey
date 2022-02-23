@@ -223,6 +223,27 @@ main.brand-schweppes {
   --brand-color: #ffcd00;
 }
 
+/* country selector theme styling */
+
+.country-selector main h2 {
+  font-size: 22px;
+  border-bottom: 1px solid #999;
+}
+
+.country-selector main ul {
+  font-size: 16px;
+  list-style: none;
+  padding: 0;
+  columns: 160px 4;
+  margin-bottom: 128px;
+}
+
+.country-selector main ul a:any-link {
+  color: currentColor;
+  text-decoration: underline;
+}
+
+
 /* above the fold CSS goes here to squash CLS */
 
 main .section-wrapper[data-section-status='loading'], main .section-wrapper[data-section-status='initialized'] {

@@ -14,6 +14,10 @@ main .hero {
     min-height: 300px;
 }
 
+.country-selector main .hero {
+    min-height: 100px;
+}
+
 main .hero h1 {
     max-width: 768px;
     margin-left: auto;
@@ -49,11 +53,21 @@ main .hero img {
         font-size: 2.75rem;
         line-height: 3.125rem;    
     }
+
+    .country-selector main .hero h1 {
+        font-size: 2.0rem;
+        line-height: 2.125rem;
+    }    
 }
 
 @media (min-width: 900px) {
     main .hero h1 {
         font-size: 3.625rem;
         line-height: 4rem;    
+    }
+    
+    .country-selector main .hero h1 {
+        font-size: 2.0rem;
+        line-height: 2.125rem;
     }
 }
