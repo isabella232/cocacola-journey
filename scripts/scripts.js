@@ -209,6 +209,7 @@ export function buildBlock(blockName, content) {
   const blockEl = document.createElement('div');
   // build image block nested div structure
   blockEl.classList.add(blockName);
+  console.log(content);
   table.forEach((row) => {
     const rowEl = document.createElement('div');
     row.forEach((col) => {
@@ -440,7 +441,7 @@ export function makeLinksRelative(main) {
         const relative = hosts.some((host) => url.hostname.includes(host));
         if (relative) {
           let { pathname } = url;
-          if (pathname.includes('/stories/')) pathname = pathname.replace('/stories/', '/news/');  
+          if (pathname.includes('/stories/')) pathname = pathname.replace('/stories/', '/news/');
           a.href = `${pathname}${url.search}${url.hash}`;
         }
       } catch (e) {
@@ -594,11 +595,12 @@ function buildArticleHeader(mainEl) {
   const picture = mainEl.querySelector('picture');
   const readTime = getMetadata('read-time') || '';
   const publicationDate = getMetadata('publication-date');
+  const heroPicture = picture ? picture.closest('p, div') : '';
 
   const articleHeaderBlockEl = buildBlock('article-header', [
     [h1],
     [`<p>${readTime}</p><p>${publicationDate}</p>`],
-    [picture.closest('p')],
+    [heroPicture],
   ]);
   div.append(articleHeaderBlockEl);
   mainEl.prepend(div);

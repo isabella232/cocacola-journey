@@ -1,0 +1,33 @@
+.recommended-articles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 64px;
+}
+
+.recommended-articles::before {
+    content: 'Recommended Articles';
+    display: block;
+    width: 100%;
+    font-size: 2rem;
+}
+
+.recommended-articles .article-card {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.recommended-articles .article-card img {
+    width: 100%;
+}
+
+.recommended-articles .article-card h3 {
+    font-size: 1rem;
+}
+
+@media (min-width: 600px) {
+    .recommended-articles .article-card {
+        width: calc(50% - 10px);
+        margin: 5px;
+    }
+}

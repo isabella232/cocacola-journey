@@ -57,7 +57,7 @@ main .article-header .article-readtime:empty {
 }
 
 main .article-header .article-picture img {
-  width: 100%;
+  max-width: 100%;
 }
 
 @media (min-width: 900px) {
