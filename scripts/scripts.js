@@ -562,7 +562,6 @@ export async function lookupPages(pathnames) {
 async function addDisclaimer(path, parent) {
   const resp = await fetch(`${path}.plain.html`);
   const html = await resp.text();
-  console.log(html);
   const section = document.createElement('div');
   section.innerHTML = html;
   section.classList.add('disclaimer', 'section-wrapper');
