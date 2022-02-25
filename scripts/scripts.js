@@ -616,8 +616,8 @@ function buildHeroBlock(main) {
   const block = picture.closest('main > div > div');
   const insideBlock = block ? block.className !== 'images' : false;
   // eslint-disable-next-line no-bitwise
-  if ((h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)
-      && !insideBlock && h1 && picture) {
+  if (h1 && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)
+      && !insideBlock && picture) {
     const section = document.createElement('div');
     section.append(buildBlock('hero', { elems: [picture, h1] }));
     main.prepend(section);
