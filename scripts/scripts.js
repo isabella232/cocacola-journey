@@ -209,7 +209,6 @@ export function buildBlock(blockName, content) {
   const blockEl = document.createElement('div');
   // build image block nested div structure
   blockEl.classList.add(blockName);
-  console.log(content);
   table.forEach((row) => {
     const rowEl = document.createElement('div');
     row.forEach((col) => {
@@ -441,7 +440,12 @@ export function makeLinksRelative(main) {
         const relative = hosts.some((host) => url.hostname.includes(host));
         if (relative) {
           let { pathname } = url;
+
           if (pathname.includes('/stories/')) pathname = pathname.replace('/stories/', '/news/');
+          if (pathname.includes('/2015/')) pathname = pathname.replace('/2015/', '/');
+          if (pathname.startsWith('/content/journey/nz/en')) pathname = pathname.replace('/content/journey/nz/en', '');
+          if (pathname.endsWith('.html')) pathname = pathname.replace('.html', '');
+          
           a.href = `${pathname}${url.search}${url.hash}`;
         }
       } catch (e) {
