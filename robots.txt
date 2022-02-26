@@ -1,0 +1,4 @@
+user-agent: *
+allow: /
+
+sitemap: https://www.coca-colajourney.co.nz/sitemap.xml
