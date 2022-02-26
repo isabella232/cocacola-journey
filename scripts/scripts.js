@@ -443,6 +443,7 @@ export function makeLinksRelative(main) {
 
           if (pathname.includes('/stories/')) pathname = pathname.replace('/stories/', '/news/');
           if (pathname.includes('/2015/')) pathname = pathname.replace('/2015/', '/');
+          if (pathname.includes('/2016/')) pathname = pathname.replace('/2016/', '/');
           if (pathname.startsWith('/content/journey/nz/en')) pathname = pathname.replace('/content/journey/nz/en', '');
           if (pathname.endsWith('.html')) pathname = pathname.replace('.html', '');
 
