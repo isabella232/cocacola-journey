@@ -4,7 +4,7 @@ main .hero-section {
 }
 
 main .hero-section > div {
-    height: 300px;
+    height: 350px;
     display: flex;
     align-items: center;
 }
