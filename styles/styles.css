@@ -260,4 +260,3 @@ main .section-wrapper.disclaimer > div {
 main .section-wrapper[data-section-status='loading'], main .section-wrapper[data-section-status='initialized'] {
     display: none;
   }
-  

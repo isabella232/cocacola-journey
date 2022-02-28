@@ -64,12 +64,9 @@ export default async function decorate(block) {
       block.append(createAnimation(animation));
     }
   });
-  const section = block.closest('.section');
+  const section = block.closest('.section-wrapper');
   const h1 = section.querySelector('h1');
   if (!block.parentElement.previousElementSibling && h1) {
     section.classList.add('hero-section');
-  }
-  if (h1 && h1.closest('.block')) {
-    section.classList.add('hero-section-wide');
   }
 }
